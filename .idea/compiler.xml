@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="patient-service" />
+        <module name="pm-analytics-service" />
         <module name="billing-service" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="billing-service" options="-parameters" />
       <module name="patient-service" options="-parameters" />
+      <module name="pm-analytics-service" options="-parameters" />
     </option>
   </component>
 </project>
