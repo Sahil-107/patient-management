@@ -1,0 +1,27 @@
+server:
+  port: 8084
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: patient-service-route
+          uri: http://patient-service:8081
+          predicates:
+            - Path=/api/patients/**
+          filters:
+            - StripPrefix=1
+
+          ## REST CLIENT -> http://localhost:8084/api/patients
+          ## API GATEWAY -> http://patient-service:4000/patients
+          ## PATIENT SERVICE -> /patients -> patients Array
+
+        - id: api-docs-patient-route
+          uri: http://patient-service:8081
+          predicates:
+            - Path=/api-docs/patients
+          filters:
+            - RewritePath=/api-docs/patients,/v3/api-docs
+
+          ## REST-CLIENT -> http://localhost:8084/api/docs/patients
+          ## API_GATEWAY -> http://patient-service:8081/v3/api-docs
